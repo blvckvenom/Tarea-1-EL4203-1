@@ -1,4 +1,4 @@
-# Teorías de Programación
+# Teoricas de Programación Avanzada
 
 En los siguientes items, se desarrollan las preguntas acerca de la Tarea de Programación Avanzada uno.
 
