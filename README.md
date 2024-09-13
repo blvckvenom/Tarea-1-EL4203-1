@@ -42,4 +42,39 @@ La complejidad temporal de un algoritmo recursivo se determina utilizando relaci
 
 Ejemplo: En una recurrencia como \( T(n) = 2T(n/2) + O(n) \), que aparece en el algoritmo **merge sort**, la complejidad temporal resultante es O(n log n).
 
+# Como Obtener Los Resultados
+
+### Solución del problema de los caminos en la PCB
+
+Se presentan dos métodos para contar la cantidad de caminos posibles entre dos puntos, \( A \) y \( B \), en una PCB representada como una grilla de tamaño \( N \times M \).
+
+El punto \( A \) se encuentra en la esquina superior izquierda y el punto \( B \) en la esquina inferior derecha. Las restricciones del problema indican que solo se pueden hacer movimientos hacia la derecha o hacia abajo, sin retroceder ni moverse en diagonal.
+
+He programado una clase llamada `Caminos`, que recibe los tamaños de la grilla \( N \) y \( M \), e implementa dos enfoques para resolver el problema:
+
+### 1. Enfoque combinatorio:
+Este enfoque calcula la cantidad de caminos posibles entre \( A \) y \( B \) utilizando el principio combinatorio. El problema se reduce a contar cuántos movimientos hacia abajo y hacia la derecha se necesitan para llegar a \( B \) desde \( A \), sin retroceder.
+
+Matemáticamente, el número de caminos es:
+
+\[
+C(N+M, M) = \frac{(N + M)!}{N! M!}
+\]
+
+Este cálculo se optimiza utilizando bucles para reducir el número de operaciones, considerando \( N \) movimientos hacia abajo y \( M \) movimientos hacia la derecha.
+
+### 2. Enfoque dinámico:
+Este método utiliza programación dinámica. Se construye una matriz de \( (N+1) \times (M+1) \), donde cada celda \( (i, j) \) almacena la cantidad de caminos que se pueden tomar para llegar a esa posición desde \( A \).
+
+Cada celda puede alcanzarse desde la celda de arriba \( (i-1, j) \) o desde la celda a la izquierda \( (i, j-1) \), sumando los valores de estas celdas. El valor final en la celda \( (N, M) \) contendrá el número total de caminos posibles.
+
+### 3. Medición del tiempo de ejecución:
+Ambos métodos utilizan un decorador `medir_tiempo` para medir el tiempo de ejecución, lo que permite comparar la eficiencia de los algoritmos para diferentes tamaños de grilla. El decorador registra el tiempo de inicio y finalización de la función, calculando el tiempo total de ejecución.
+
+### 4. Comparación gráfica de los tiempos de ejecución:
+Para visualizar la diferencia en los tiempos de ejecución de ambos métodos, se creó el script `gen_graf.py`, que genera gráficos comparativos utilizando `matplotlib`. Este script ejecuta ambos métodos para distintos tamaños de grillas, desde \( 5 \times 5 \) hasta \( 1000 \times 1000 \), y luego grafica los tiempos obtenidos.
+
+Los tiempos de ejecución se almacenan y se representan gráficamente, y el gráfico final se guarda como `execution_times.svg`.
+
+
 
